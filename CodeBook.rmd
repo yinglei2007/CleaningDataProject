@@ -8,9 +8,9 @@ output:
 ---
  
 ## Project Description
- Clean up datasets collected from the accelerometers from the Samsung Galaxy S smartphone. 
- The tidy dataset contains descriptive measurements names and activity labels.
- The final dataset contains mean value of all measurements for each activity and subject.
+ - Clean up datasets collected from the accelerometers from the Samsung Galaxy S smartphone. 
+ - The tidy dataset contains descriptive measurements names and activity labels.
+ - The final dataset contains mean value of all measurements for each activity and subject.
  
 ##Study design and data processing
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years.  The obtained
@@ -24,8 +24,8 @@ acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experi
 data manually.
  
 ###Notes on the original (raw) data 
-test data is in x_test.txt
-train data is in x_train.txt
+- test data is in x_test.txt
+- train data is in x_train.txt
  
 ##Creating the tidy datafile
  
@@ -37,9 +37,9 @@ train data is in x_train.txt
 5. add activity information
  
 ###Cleaning of the data
-Extracts only the measurements on the mean and standard deviation for each measurement. 
-Group data set with "Subject" and "Activity"
-Get mean value of each measurement grouped by "Subject" and "Activity"
+- Extracts only the measurements on the mean and standard deviation for each measurement. 
+- Group data set with "Subject" and "Activity"
+- Get mean value of each measurement grouped by "Subject" and "Activity"
  
 ##Description of the variables in the test_trainData.txt file
 General description of the file including:
