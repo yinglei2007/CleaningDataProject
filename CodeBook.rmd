@@ -1,55 +1,78 @@
 ---
-title: "Codebook template"
-author: "Your name here"
-date: "The date here"
+title: Getting and Cleaning Data Course Project
+author: Lei Ying
+date: 06/20/2015
 output:
   html_document:
     keep_md: yes
 ---
  
 ## Project Description
-Short description of the project
+ Clean up datasets collected from the accelerometers from the Samsung Galaxy S smartphone. 
+ The tidy dataset contains descriptive measurements names and activity labels.
+ The final dataset contains mean value of all measurements for each activity and subject.
  
 ##Study design and data processing
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years.  The obtained
+dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training
+data and 30% the test data.
  
 ###Collection of the raw data
-Description of how the data was collected.
+Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a
+smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear
+acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the
+data manually.
  
 ###Notes on the original (raw) data 
-Some additional notes (if avaialble, otherwise you can leave this section out).
+test data is in x_test.txt
+train data is in x_train.txt
  
 ##Creating the tidy datafile
  
 ###Guide to create the tidy data file
-Description on how to create the tidy data file (1. download the data, ...)/
+1. download the data
+2. merge test train data files
+3. add descriptive measurements names as column names
+4. add subject information 
+5. add activity information
  
 ###Cleaning of the data
-Short, high-level description of what the cleaning script does. [link to the readme document that describes the code in greater detail]()
+Extracts only the measurements on the mean and standard deviation for each measurement. 
+Group data set with "Subject" and "Activity"
+Get mean value of each measurement grouped by "Subject" and "Activity"
  
-##Description of the variables in the tiny_data.txt file
+##Description of the variables in the test_trainData.txt file
 General description of the file including:
- - Dimensions of the dataset
- - Summary of the data
- - Variables present in the dataset
+ - Dimension: 10299 observations, 563 variables
+ - Summary of the data: combined with test and train datasets, with subject and activity information
+ - Variables present in the dataset: 561 measurements, plus Subject and Activity for subject and activity information
  
-(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
- 
-###Variable 1 (repeat this section for all variables in the dataset)
-Short description of what the variable describes.
  
 Some information on the variable including:
- - Class of the variable
- - Unique values/levels of the variable
- - Unit of measurement (if no unit of measurement list this as well)
- - In case names follow some schema, describe how entries were constructed (for example time-body-gyroscope-z has 4 levels of descriptors. Describe these 4 levels). 
+ - Class of the variable: measurements are numeric, Subject and Activity are factor
+ - Unique values/levels of the variable: 
+    - measurements are numeric range from -1 to +1
+    - Subject has 30 levels (1 to 30)
+    - Activity has 6 levels ("LAYING", "SITTING", "STANDING", "WALKING", "WALKING_DOWNSTAIRS" "WALKING_UPSTAIRS")
  
-(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
- 
-####Notes on variable 1:
-If available, some additional notes on the variable not covered elsewehere. If no notes are present leave this section out.
+####Notes on variables:
+- testData: data.frame, for x_text data
+- trainData: data.frame, for x_train data
+- test_trainData: data.frame, merged testData and trainData
+- subject_test: subject information for x_text dataset
+- subject_train: subject information for x_train dataset
+- testFeature: activity information for x_test dataset
+- trainFeature: activity information for x_train dataset
+- activity_labels: data.frame for activity_label information
+- features: data.frame, for descriptive measurement name
+- dataCol: vector to store descriptive measurement names from features
+- subject_total: combined test and train data subject information
+- activity_total: combined test and train data activity information
+- measure_data: data frame, with only the measurements on the mean and standard deviation for each measurement
+- by_activity_subject: data frame, grouped measure_data for Activity and Subject
+- meanValue: data frame, mean value of each measurement grouped for Activity and Subject
+
  
 ##Sources
-Sources you used if any, otherise leave out.
+Packages used: dplyr, data.table
  
-##Annex
-If you used any code in the codebook that had the echo=FALSE attribute post this here (make sure you set the results parameter to 'hide' as you do not want the results to show again)
