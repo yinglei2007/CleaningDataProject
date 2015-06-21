@@ -56,21 +56,25 @@ measure_data <- measure_data[-grep("Freq()", names(measure_data))]
 write.table(measure_data, "measure_data.txt")
 
 ## Step3: use descriptive names to name activity in the data set
+## add subject information to measure_data
+measure_data$Subject <- subject_total[,1]
+## add activity information to measure_data
+measure_data$Activity <- activity_total[,1]
 ## get value from activity_labels
-test_trainData$Activity[test_trainData$Activity==1] <- "WALKING"
-test_trainData$Activity[test_trainData$Activity==2] <- "WALKING_UPSTAIRS"
-test_trainData$Activity[test_trainData$Activity==3] <- "WALKING_DOWNSTAIRS"
-test_trainData$Activity[test_trainData$Activity==4] <- "SITTING"
-test_trainData$Activity[test_trainData$Activity==5] <- "STANDING"
-test_trainData$Activity[test_trainData$Activity==6] <- "LAYING"
-write.table(test_trainData, "test_trainData.txt")
+measure_data$Activity[measure_data$Activity==1] <- "WALKING"
+measure_data$Activity[measure_data$Activity==2] <- "WALKING_UPSTAIRS"
+measure_data$Activity[measure_data$Activity==3] <- "WALKING_DOWNSTAIRS"
+measure_data$Activity[measure_data$Activity==4] <- "SITTING"
+measure_data$Activity[measure_data$Activity==5] <- "STANDING"
+measure_data$Activity[measure_data$Activity==6] <- "LAYING"
+write.table(measure_data, "measure_data.txt")
 
 ## Step4: Appropriately labels the data set with descriptive variable names. 
 ## Column names were already added to the data set in step1 with feature.txt
-colnames(test_trainData)
+colnames(measure_data)
 
 ## Step5: From the data set in step 4, creates a second, independent tidy data set 
 ## with the average of each variable for each activity and each subject.
-by_activity_subject <- group_by(test_trainData, Subject, Activity)
+by_activity_subject <- group_by(measure_data, Subject, Activity)
 meanValue <- summarise_each(by_activity_subject, funs(mean))
 write.table(meanValue, "meanValue.txt", row.name=FALSE)
