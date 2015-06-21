@@ -11,7 +11,7 @@ Then, I extracted name of measurements from features and applied as column names
 To add subject information, I used rbind() to combine subject_test and subject_train and created subject_total.
 Then, I added subject_total as a new column named "Subject" to test_trainData to add subject information.
 To add activity information, I used rbind() to combine y_test and y_train and created activity_total.
-Then, I added activity_total as a new column named "Activity" to test_trainData to add subject information.
+Then, I added activity_total as a new column named "Activity" to test_trainData to add subject information. The dimension of test_trainData is 10299 rows (observations), 563 columns (varivables)
 
 For Step2:
 To extract only the measurements on the mean and standard deviation for each measurement, I used 
