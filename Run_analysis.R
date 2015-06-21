@@ -73,4 +73,4 @@ colnames(test_trainData)
 ## with the average of each variable for each activity and each subject.
 by_activity_subject <- group_by(test_trainData, Subject, Activity)
 meanValue <- summarise_each(by_activity_subject, funs(mean))
-write.table(meanValue, "meanValue.txt")
+write.table(meanValue, "meanValue.txt", row.name=FALSE)
